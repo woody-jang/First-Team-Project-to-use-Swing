@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.*;
    
@@ -27,6 +29,8 @@ public class Main extends JFrame {
 	static StatisticsDialog statisDlg;
 	static Main newMain;
 	static int[] scoreList = new int[6];
+	List<List<Integer>> totalLottoNum = new ArrayList<>();
+	List<Integer> bonusNumList = new ArrayList<>();
 	
 	public Main() {
 		this.setLocation(700, 250);

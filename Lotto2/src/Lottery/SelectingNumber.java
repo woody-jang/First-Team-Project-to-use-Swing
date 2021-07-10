@@ -2,10 +2,12 @@ package Lottery;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.swing.*;
@@ -188,11 +190,19 @@ class SelectingNumber extends JFrame {
 	JPanel main;
 	JPanel warningPnl; // 제일 위에 설명할 라벨을 위한 패널
 	JLabel warningMsg;
-
+	List<Integer> outcomeNum;
+	int bonusNum;
+	JPanel cheatingPnl;
+	
 //	Main에서 next버튼 눌렸을 때, ActionListener로 인해 호출 
 //	ActionListener cast this constructor to choose the numbers of lottery
 
 	public SelectingNumber(int select) { // Main 콤보박스에서 선택한 숫자값 들고오기
+		// 1등 당첨치트용
+		outcomeNum = MakeNumber.randomNum();
+		bonusNum = outcomeNum.remove(6);
+		Collections.sort(outcomeNum);
+		
 		this.setLocation(550, 250);
 		setTitle("게임 선택");
 		// 3개를 생성자에서 초기화 한 이유는
@@ -205,6 +215,14 @@ class SelectingNumber extends JFrame {
 		main = new JPanel(); // 전체를 관리할 패널
 		main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS)); // 세로정렬
 
+		cheatingPnl = new JPanel(); // 1등 치팅용 패널
+		cheatingPnl.setOpaque(true);
+		cheatingPnl.setBackground(Color.white);
+		JLabel cheatingLbl = new JLabel(outcomeNum.toString() + " + " + bonusNum);
+		cheatingLbl.setFont(new Font(cheatingLbl.getFont().getName(), Font.ITALIC, 10));
+		cheatingPnl.add(cheatingLbl);
+		main.add(cheatingPnl);
+		
 		warningPnl = new JPanel(); // 설명용 패널
 		URL warningIconURL = SelectingNumber.class.getClassLoader().getResource("sentence.gif");
 		ImageIcon warningIcon = new ImageIcon(warningIconURL);
@@ -302,7 +320,7 @@ class SelectingNumber extends JFrame {
 				else {
 					ConfirmDialog cfmDialog = new ConfirmDialog(select);
 					if (cfmDialog.returnVal == 1) {
-						new outcome(selectedNum);
+						new outcome(selectedNum, outcomeNum, bonusNum);
 						SelectingNumber.this.dispose();
 					}
 				}
