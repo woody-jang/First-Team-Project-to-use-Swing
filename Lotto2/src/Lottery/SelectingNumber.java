@@ -36,11 +36,15 @@ class AutoLblMouseAdapter extends MouseAdapter {
 						Main.selNum.selectedNum[i], i);
 			}
 		} else {
-			Main.selNum.selectedNum[idx] = MakeNumber.randomNumArray();
-			Main.selNum.setNumLabel();
+			if (idx != 0 && Main.selNum.choiceOfwayList[idx - 1] == null)
+				JOptionPane.showMessageDialog(null, "순서대로 입력하세요", "순서 에러", JOptionPane.ERROR_MESSAGE);
+			else {
+				Main.selNum.selectedNum[idx] = MakeNumber.randomNumArray();
+				Main.selNum.setNumLabel();
 
-			Main.selNum.choiceOfwayList[idx] = new ChoiceOfway(Main.selNum.numOfLottery[idx],
-					Main.selNum.selectedNum[idx], idx);
+				Main.selNum.choiceOfwayList[idx] = new ChoiceOfway(Main.selNum.numOfLottery[idx],
+						Main.selNum.selectedNum[idx], idx);
+			}
 		}
 	}
 }
@@ -193,7 +197,7 @@ class SelectingNumber extends JFrame {
 	List<Integer> outcomeNum;
 	int bonusNum;
 	JPanel cheatingPnl;
-	
+
 //	Main에서 next버튼 눌렸을 때, ActionListener로 인해 호출 
 //	ActionListener cast this constructor to choose the numbers of lottery
 
@@ -202,7 +206,7 @@ class SelectingNumber extends JFrame {
 		outcomeNum = MakeNumber.randomNum();
 		bonusNum = outcomeNum.remove(6);
 		Collections.sort(outcomeNum);
-		
+
 		this.setLocation(550, 250);
 		setTitle("게임 선택");
 		// 3개를 생성자에서 초기화 한 이유는
@@ -222,7 +226,7 @@ class SelectingNumber extends JFrame {
 		cheatingLbl.setFont(new Font(cheatingLbl.getFont().getName(), Font.ITALIC, 10));
 		cheatingPnl.add(cheatingLbl);
 		main.add(cheatingPnl);
-		
+
 		warningPnl = new JPanel(); // 설명용 패널
 		URL warningIconURL = SelectingNumber.class.getClassLoader().getResource("sentence.gif");
 		ImageIcon warningIcon = new ImageIcon(warningIconURL);
@@ -328,11 +332,11 @@ class SelectingNumber extends JFrame {
 		});
 
 		nextPnl.add(nextLbl);
-		
+
 		URL cancleLblIconURL = SelectingNumber.class.getClassLoader().getResource("NEXT.gif");
 		ImageIcon cancleLblIcon = new ImageIcon(cancleLblIconURL);
 		JLabel cancleLbl = new JLabel("취소");
-		
+
 		cancleLbl.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -340,7 +344,7 @@ class SelectingNumber extends JFrame {
 				dispose();
 			}
 		});
-		
+
 		nextPnl.add(cancleLbl);
 
 		main.add(nextPnl);
