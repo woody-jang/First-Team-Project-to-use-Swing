@@ -69,7 +69,7 @@ public class StatisticsDialog extends JDialog {
 		totalCntGame.setOpaque(true);
 		totalCntGame.setBackground(Color.white);
 
-		totalGame = new JLabel("총 게임 횟수 : " + count + "회(" + (count * 1000) + "원)");
+		totalGame = new JLabel("총 게임 횟수 : " + (long) count + "회(" + ((long) count * 1000l) + "원)");
 		totalGame.setFont(new Font(totalGame.getFont().getName(), Font.PLAIN, 20));
 		totalCntGame.add(totalGame);
 
@@ -107,6 +107,6 @@ public class StatisticsDialog extends JDialog {
 			scoreLblList.get(i).setText(" " + Main.scoreList[i] + "회 ");
 			count += Main.scoreList[i];
 		}
-		totalGame.setText("총 게임 횟수 : " + count + "회(" + (count * 1000) + "원)");
+		totalGame.setText("총 게임 횟수 : " + (long) count + "회(" + ((long) count * 1000l) + "원)");
 	}
 }

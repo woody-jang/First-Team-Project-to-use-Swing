@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.swing.*;
@@ -59,6 +60,8 @@ public class Main extends JFrame {
 		URL nextLblIconURL = Main.class.getClassLoader().getResource("MainNext.gif");
 		ImageIcon nextLblIcon = new ImageIcon(nextLblIconURL);
 		JLabel nextLbl = new JLabel(nextLblIcon);
+		
+		JButton getFirstCnt = new JButton("1등이 언제 나올까?");
 
 		numOfBet.addActionListener(new ActionListener() {
 			@Override
@@ -76,9 +79,60 @@ public class Main extends JFrame {
 			}
 		});
 		
-		
+		getFirstCnt.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int cnt;
+				boolean check;
+				while (true) {
+					cnt = 0;
+					check = false;
+					int[] temp = MakeNumber.randomNumArray();
+					List<Integer> tempLotto = MakeNumber.randomNum();
+					totalLottoNum.add(tempLotto);
+					int bnusNum = tempLotto.remove(6);
+					bonusNumList.add(bnusNum);
+					for (int i : temp) {
+						if (tempLotto.contains(i))
+							cnt++;
+						if (bnusNum == i)
+							check = true;
+					}
+					if (cnt == 5 && check)
+						scoreList[1]++;
+					else if (cnt == 6) {
+						int[][] temp1 = new int[1][6];
+						temp1[0] = temp;
+						Collections.sort(tempLotto);
+						new outcome(temp1, tempLotto, bnusNum);
+						dispose();
+						break;
+					}
+					else {
+						switch(cnt) {
+						case 6:
+							scoreList[0]++;
+							break;
+						case 5:
+							scoreList[2]++;
+							break;
+						case 4:
+							scoreList[3]++;
+							break;
+						case 3:
+							scoreList[4]++;
+							break;
+						default:
+							scoreList[5]++;
+							break;
+						}
+					}
+				}
+			}
+		});
 		btnPnl.add(numOfBet);
 		btnPnl.add(nextLbl);
+		btnPnl.add(getFirstCnt);
 
 		add(logoPnl, "North");
 		add(copyPnl);
