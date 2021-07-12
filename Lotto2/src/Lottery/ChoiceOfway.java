@@ -350,11 +350,12 @@ class ChoiceOfway extends JFrame {
 		for (int i : selectedNumber) {
 			int j = (i % 7 == 0) ? i / 7 - 1 : i / 7;
 			int k = (i % 7 == 0) ? 6 : i % 7 - 1;
-			check.get(j).get(k).setSelected(true);;
+			check.get(j).get(k).setSelected(true);
+			;
 			selectedNumberList.add(i);
 		}
 	}
-	
+
 	private void addLottoRadio(JPanel lottoPnl) {
 		for (int i = 0; i < 7; i++) {
 			JPanel lottoTemp = new JPanel();

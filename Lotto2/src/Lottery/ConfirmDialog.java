@@ -10,7 +10,7 @@ import javax.swing.*;
 
 public class ConfirmDialog extends JDialog {
 	int returnVal; // 호출한 프레임에 넘겨줄 버튼 선택값
-	
+
 	public ConfirmDialog(int select) {
 		this.setLocation(700, 300);
 		setModal(true);
@@ -70,11 +70,11 @@ public class ConfirmDialog extends JDialog {
 		mainPnl.add(btnPnl);
 
 		add(mainPnl);
-		
+
 		pack();
 		setVisible(true);
 	}
-	
+
 	public int getReturnVal() {
 		return this.returnVal;
 	}

@@ -16,25 +16,25 @@ public class LottoHistoryDialog extends JDialog {
 	List<Integer> bonusNumList = Main.newMain.bonusNumList;
 	List<List<JLabel>> historyNumLbl = new ArrayList<>();
 	List<List<JLabel>> historyNumCntLbl = new ArrayList<>();
-	
+
 	public LottoHistoryDialog() {
 		this.setLocation(700, 300);
-		
+
 		setModal(true);
 		JPanel totalNumber = new JPanel();
 		totalNumber.setLayout(new BoxLayout(totalNumber, BoxLayout.Y_AXIS));
 		totalNumber.setOpaque(true);
 		totalNumber.setBackground(Color.white);
-		
+
 		JPanel titlePnl = new JPanel();
 		titlePnl.setOpaque(true);
 		titlePnl.setBackground(Color.white);
-		
+
 		JLabel titleString = new JLabel("숫자별 1등 출현 빈도");
 		titleString.setFont(new Font(titleString.getFont().getName(), Font.PLAIN, 16));
 		titlePnl.add(titleString);
 		totalNumber.add(titlePnl);
-		
+
 		for (int i = 0; i < 7; i++) {
 			JPanel eachTotalNumber = new JPanel();
 			if (i == 6)
@@ -77,7 +77,7 @@ public class LottoHistoryDialog extends JDialog {
 		pack();
 		setVisible(true);
 	}
-	
+
 	private int getOutComeNumCnt(int tmp) {
 		int count = 0;
 		if (totalLottoNum.isEmpty())
@@ -93,7 +93,7 @@ public class LottoHistoryDialog extends JDialog {
 			return count;
 		}
 	}
-	
+
 //	public void ShowStatistics() {
 //		SetCountLbl();
 //		setVisible(true);

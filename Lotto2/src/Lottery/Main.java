@@ -1,4 +1,5 @@
 package Lottery;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.swing.*;
-   
+
 /*	1) 로또 개수, 확인 버튼 -> 원하는 개수 입력 받기 
  * 	2) 수동, 반자동, 자동 버튼 Label / 수정, 삭제 버튼 
  * 	3) 번호 고르기 > 자동(반자동), 초기화, 확인 -> 총 금액, 구매하기 버튼 
@@ -32,19 +33,19 @@ public class Main extends JFrame {
 	static int[] scoreList = new int[6];
 	List<List<Integer>> totalLottoNum = new ArrayList<>();
 	List<Integer> bonusNumList = new ArrayList<>();
-	
+
 	public Main() {
 		this.setLocation(700, 250);
 		setTitle("로또 판매프로그램");
 		JPanel logoPnl = new JPanel();
 		logoPnl.setOpaque(true);
 		logoPnl.setBackground(Color.white);
-		
+
 		URL img1URL = Main.class.getClassLoader().getResource("Logo1.png");
 		ImageIcon img1 = new ImageIcon(img1URL);
 		JLabel logoLbl = new JLabel(img1);
 		logoPnl.add(logoLbl);
-		
+
 		JPanel copyPnl = new JPanel();
 		URL msgLblIconURL = Main.class.getClassLoader().getResource("MainSentence.gif");
 		ImageIcon msgLblIcon = new ImageIcon(msgLblIconURL);
@@ -52,15 +53,15 @@ public class Main extends JFrame {
 		copyPnl.setOpaque(true);
 		copyPnl.setBackground(Color.white);
 		copyPnl.add(msgLbl);
-		
+
 		JPanel btnPnl = new JPanel();
 		btnPnl.setOpaque(true);
 		btnPnl.setBackground(Color.white);
-		
+
 		URL nextLblIconURL = Main.class.getClassLoader().getResource("MainNext.gif");
 		ImageIcon nextLblIcon = new ImageIcon(nextLblIconURL);
 		JLabel nextLbl = new JLabel(nextLblIcon);
-		
+
 		JButton getFirstCnt = new JButton("1등이 언제 나올까?");
 
 		numOfBet.addActionListener(new ActionListener() {
@@ -70,7 +71,7 @@ public class Main extends JFrame {
 				select = tmp.getSelectedIndex() + 1;
 			}
 		});
-		
+
 		nextLbl.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -78,7 +79,7 @@ public class Main extends JFrame {
 				Main.this.dispose();
 			}
 		});
-		
+
 		getFirstCnt.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -107,9 +108,8 @@ public class Main extends JFrame {
 						new outcome(temp1, tempLotto, bnusNum);
 						dispose();
 						break;
-					}
-					else {
-						switch(cnt) {
+					} else {
+						switch (cnt) {
 						case 6:
 							scoreList[0]++;
 							break;
