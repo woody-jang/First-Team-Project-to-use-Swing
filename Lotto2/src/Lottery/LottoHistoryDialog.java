@@ -26,7 +26,6 @@ public class LottoHistoryDialog extends JDialog {
 		totalNumber.setOpaque(true);
 		totalNumber.setBackground(Color.white);
 
-		
 		JPanel titlePnl = new JPanel();
 		titlePnl.setOpaque(true);
 		titlePnl.setBackground(Color.white);
