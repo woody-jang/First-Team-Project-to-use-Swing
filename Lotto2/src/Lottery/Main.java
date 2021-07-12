@@ -1,6 +1,7 @@
 package Lottery;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -58,11 +59,11 @@ public class Main extends JFrame {
 		btnPnl.setOpaque(true);
 		btnPnl.setBackground(Color.white);
 
-		URL nextLblIconURL = Main.class.getClassLoader().getResource("MainNext.gif");
-		ImageIcon nextLblIcon = new ImageIcon(nextLblIconURL);
-		JLabel nextLbl = new JLabel(nextLblIcon);
+		JLabel nextLbl = new JLabel("NEXT");
+		nextLbl.setFont(new Font("나눔손글씨 금은보화", Font.PLAIN, 18));
 
-		JButton getFirstCnt = new JButton("1등이 언제 나올까?");
+		JLabel getFirstCnt = new JLabel("  1등이 언제 나올까?");
+		getFirstCnt.setFont(new Font("휴먼매직체", Font.PLAIN, 18));
 
 		numOfBet.addActionListener(new ActionListener() {
 			@Override
@@ -80,9 +81,9 @@ public class Main extends JFrame {
 			}
 		});
 
-		getFirstCnt.addActionListener(new ActionListener() {
+		getFirstCnt.addMouseListener(new MouseAdapter() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void mouseClicked(MouseEvent e) {
 				int cnt;
 				boolean check;
 				while (true) {

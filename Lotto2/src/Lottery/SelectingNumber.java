@@ -278,7 +278,7 @@ class SelectingNumber extends JFrame {
 			for (int j = 0; j < 3; j++) { // 버튼이 2개 이므로 for 조건도 2보다 작을때까지
 				JLabel tmpLbl;
 				if (j == 0) {
-					URL tmpIconURL = SelectingNumber.class.getClassLoader().getResource("AUTO.gif");
+					URL tmpIconURL = SelectingNumber.class.getClassLoader().getResource("AUTO1.jpg");
 					ImageIcon tmpIcon = new ImageIcon(tmpIconURL);
 					tmpLbl = new JLabel(tmpIcon); // 담은 버튼을 담을 임시 저장소
 					tmpLbl.addMouseListener(new AutoLblMouseAdapter());
@@ -313,13 +313,13 @@ class SelectingNumber extends JFrame {
 		nextPnl.setOpaque(true);
 		nextPnl.setBackground(Color.white);
 
-		URL autoLblIconURL = SelectingNumber.class.getClassLoader().getResource("AUTO.gif");
+		URL autoLblIconURL = SelectingNumber.class.getClassLoader().getResource("AUTO2.jpg");
 		ImageIcon autoLblIcon = new ImageIcon(autoLblIconURL);
 		JLabel autoLbl = new JLabel(autoLblIcon); // 담은 버튼을 담을 임시 저장소
 		autoLbl.addMouseListener(new AutoLblMouseAdapter());
 		nextPnl.add(autoLbl);
 
-		URL nextLblIconURL = SelectingNumber.class.getClassLoader().getResource("NEXT.gif");
+		URL nextLblIconURL = SelectingNumber.class.getClassLoader().getResource("NEXT.jpg");
 		ImageIcon nextLblIcon = new ImageIcon(nextLblIconURL);
 		JLabel nextLbl = new JLabel(nextLblIcon);
 
@@ -340,9 +340,9 @@ class SelectingNumber extends JFrame {
 
 		nextPnl.add(nextLbl);
 
-		URL cancleLblIconURL = SelectingNumber.class.getClassLoader().getResource("NEXT.gif");
+		URL cancleLblIconURL = SelectingNumber.class.getClassLoader().getResource("CANCEL.jpg");
 		ImageIcon cancleLblIcon = new ImageIcon(cancleLblIconURL);
-		JLabel cancleLbl = new JLabel("취소");
+		JLabel cancleLbl = new JLabel(cancleLblIcon);
 
 		cancleLbl.addMouseListener(new MouseAdapter() {
 			@Override
