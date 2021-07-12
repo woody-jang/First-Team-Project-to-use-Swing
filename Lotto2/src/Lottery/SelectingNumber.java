@@ -28,13 +28,20 @@ class AutoLblMouseAdapter extends MouseAdapter {
 				break;
 		}
 		if (idx == Main.selNum.editOfLottery.size()) {
+			boolean chkSize = true;
 			for (int i = 0; i < Main.selNum.editOfLottery.size(); i++) {
+				if (Main.selNum.choiceOfwayList[i] != null)
+					continue;
 				Main.selNum.selectedNum[i] = MakeNumber.randomNumArray();
 				Main.selNum.setNumLabel();
 
 				Main.selNum.choiceOfwayList[i] = new ChoiceOfway(Main.selNum.numOfLottery[i],
 						Main.selNum.selectedNum[i], i);
+				
+				chkSize = false;
 			}
+			if (chkSize)
+				JOptionPane.showMessageDialog(null, "모든 게임이 입력되어 전체 자동이 안됩니다", "전체 자동 에러", JOptionPane.ERROR_MESSAGE);
 		} else {
 			if (idx != 0 && Main.selNum.choiceOfwayList[idx - 1] == null)
 				JOptionPane.showMessageDialog(null, "순서대로 입력하세요", "순서 에러", JOptionPane.ERROR_MESSAGE);
