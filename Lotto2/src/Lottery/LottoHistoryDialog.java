@@ -87,9 +87,9 @@ public class LottoHistoryDialog extends JDialog {
 				List<Integer> tmpList = totalLottoNum.get(i);
 				if (tmpList.contains(tmp))
 					count++;
-				if (bonusNumList.contains(tmp))
-					count++;
 			}
+			if (bonusNumList.contains(tmp))
+				count++;
 			return count;
 		}
 	}
