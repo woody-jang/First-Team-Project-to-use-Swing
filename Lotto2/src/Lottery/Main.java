@@ -111,9 +111,6 @@ public class Main extends JFrame {
 						break;
 					} else {
 						switch (cnt) {
-						case 6:
-							scoreList[0]++;
-							break;
 						case 5:
 							scoreList[2]++;
 							break;

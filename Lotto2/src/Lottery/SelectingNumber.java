@@ -37,7 +37,7 @@ class AutoLblMouseAdapter extends MouseAdapter {
 
 				Main.selNum.choiceOfwayList[i] = new ChoiceOfway(Main.selNum.numOfLottery[i],
 						Main.selNum.selectedNum[i], i);
-				
+
 				chkSize = false;
 			}
 			if (chkSize)
